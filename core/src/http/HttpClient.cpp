@@ -145,8 +145,10 @@ HttpClient::HttpResponseOutcome HttpClient::SendRequest(const HttpRequest &reque
     curl_easy_setopt(m_curlHandle, CURLOPT_CONNECTTIMEOUT_MS, m_connectTimeout);
 
     curl_easy_setopt(m_curlHandle, CURLOPT_URL, url.c_str());
-    curl_easy_setopt(m_curlHandle, CURLOPT_SSL_VERIFYPEER, 1L);
-    curl_easy_setopt(m_curlHandle, CURLOPT_SSL_VERIFYHOST, 2L);
+    //curl_easy_setopt(m_curlHandle, CURLOPT_SSL_VERIFYPEER, 1L);
+    //curl_easy_setopt(m_curlHandle, CURLOPT_SSL_VERIFYHOST, 2L);
+    curl_easy_setopt(m_curlHandle, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(m_curlHandle, CURLOPT_SSL_VERIFYHOST, 0L);
     curl_easy_setopt(m_curlHandle, CURLOPT_HEADERDATA, &response);
     curl_easy_setopt(m_curlHandle, CURLOPT_HEADERFUNCTION, recvHeaders);
 
